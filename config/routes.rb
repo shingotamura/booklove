@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   resources :users,only: [:index,:show,:new,:create]do
     member do
       get :posts
+      get :likes
     end
   end
   resources :posts,only: [:index,:show,:create,:destroy]
+  resources :favorites,only: [:create,:destroy]
 end
  

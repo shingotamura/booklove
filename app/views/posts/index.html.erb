@@ -1,1 +1,26 @@
-<%= render 'posts/posts', posts: @posts %>
+<ul class="list-unstyled">
+  <% @posts.each do |post| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 50 }) %>" alt="">
+      <div class="media-body row">
+        <div class="col-sm-2">
+          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
+        </div>
+        <div class="col-sm-2">
+          <%= image_tag post.image.to_s,class:'img-fluid' %>
+        </div>
+        <div class="col-sm-6">
+          <p>タイトル:  <%= link_to post.title, post_path(post)%></p>
+          <p>著者名:  <%= post.author%></p>
+        </div>
+        <div class="col-sm-2 mr-5">
+            <%= link_to '削除',post,method: :delete,class:'btn btn-danger btn-block' %>
+        </div>
+        <%= render 'favorites/like_button',post: post %>
+        
+        
+      </div>
+    </li>
+  <% end %>
+  <%= paginate @posts %>
+</ul>

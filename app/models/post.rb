@@ -4,4 +4,7 @@ class Post < ApplicationRecord
      validates :title, presence: true, length: { maximum: 255 }
      validates :author, presence: true, length: { maximum: 255 }
     mount_uploader :image, ImageUploader
+    
+    has_many :favorites
+    has_many :users, through: :favorites,source: :user
 end
