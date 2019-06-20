@@ -17,7 +17,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post=current_user.posts.find(params[:id])
+    
+    @post=Post.find(params[:id])
   end
 
   def index
