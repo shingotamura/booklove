@@ -1,9 +1,9 @@
 <% if logged_in? %>
 <div class="row">
-    <div class="col-sm-4">
+    <div>
      　
     </div>
-    <div class="col-sm-8">
+    <div class="offset-3 col-sm-6">
     　<%= form_with(model: @post, local: true) do |f| %>
 　        <div class="form-group">
           　<%= f.file_field :image %>
