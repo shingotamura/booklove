@@ -26,5 +26,9 @@ class User < ApplicationRecord
     def like?(post)
        self.likes.include?(post)
     end
+    
+    def feed_posts
+        Post.all
+    end
         
 end

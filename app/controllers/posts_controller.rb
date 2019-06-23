@@ -9,6 +9,7 @@ class PostsController < ApplicationController
       flash[:success]='投稿しました'
       redirect_to posts_path
     else
+      @posts=current_user.feed_posts.order(id: :desc).page(params[:id])
       flash.now[:danger]='投稿に失敗しました'
       render 'toppages/index'
     end
@@ -24,7 +25,7 @@ class PostsController < ApplicationController
 
   def index
     if logged_in?
-     @posts=current_user.posts.order(id: :desc).page(params[:page])
+     @posts=current_user.feed_posts.order(id: :desc).page(params[:page])
     end
   end
 
